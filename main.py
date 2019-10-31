@@ -18,7 +18,6 @@ for x in np_df_meta:
     product_rating.update({x[0]: sum(col)/len(col)})
 
 d_sorted_by_value = dict(OrderedDict(sorted(product_rating.items(), key=lambda x: x[1])))
-keyyy = list(d_sorted_by_value.keys())
 
 d_price = {}
 for k in d_sorted_by_value.keys():
