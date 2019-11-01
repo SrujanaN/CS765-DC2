@@ -17,12 +17,13 @@ category_rating = {}
 category_review_count = {}
 count = 0
 for x in np_df_meta:
-    # if count == 100:
+    # if count == 10:
     #     break
     # count = count + 1
     category = np_df_meta[np_df_meta[:, 3] == x[3], 0]
     category_list.update({x[3]: category})
 print("done here")
+print(category_list.get("Children's Music"))
 for key, value in category_list.items():
     # count = 0
     # if count == 1:
@@ -35,7 +36,7 @@ for key, value in category_list.items():
         product_rating.update({v: summ})
         cul_sum = cul_sum + summ
     category_rating.update({key: cul_sum/len(value)})
-    # category_review_count.update({key: len(value)})
+    category_review_count.update({key: len(value)})
 
 print(category_rating)
 prod_rate = list(product_rating.items())
@@ -55,12 +56,29 @@ print(prod_rate[0][1])
 # print(category_rating)
 
 category_sorted_by_rating = dict(OrderedDict(sorted(category_rating.items(), key=lambda x: x[1])))
-#
-fig1 = go.Figure()
+
+d_review_count = {}
+for k in category_sorted_by_rating.keys():
+    val = category_review_count.get(k)
+    d_review_count.update({k: val})
+
+# Figure to display relation between rating and reviews per category
+fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
 fig1.add_trace(
-    go.Scatter(x=list(category_sorted_by_rating.keys()), y=list(category_sorted_by_rating.values())))
+    go.Scatter(x=list(category_sorted_by_rating.keys()), y=list(category_sorted_by_rating.values())),
+    secondary_y=False,)
 
+fig1.add_trace(
+    go.Scatter(x=list(category_sorted_by_rating.keys()), y=list(d_review_count.values())),
+    secondary_y=True,)
+
+# Set x-axis title
+fig1.update_xaxes(title_text="<b>Category</b>")
+
+# Set y-axes titles
+fig1.update_yaxes(title_text="<b>Average rating </b>", secondary_y=False)
+fig1.update_yaxes(title_text="<b>Number of Reviews</b>", secondary_y=True)
 fig1.show()
 
 d_sorted_by_value = dict(OrderedDict(sorted(product_rating.items(), key=lambda x: x[1])))
@@ -90,7 +108,7 @@ fig.add_trace(
 fig.update_xaxes(title_text="<b>Product ID's</b>")
 
 # Set y-axes titles
-fig.update_yaxes(title_text="<b>Average rating/product </b>", secondary_y=False)
+fig.update_yaxes(title_text="<b>Average rating </b>", secondary_y=False)
 fig.update_yaxes(title_text="<b>Price</b>", secondary_y=True)
 
 # fig.savefig('dc2-1.png')
