@@ -22,8 +22,8 @@ for x in np_df_meta:
     # count = count + 1
     category = np_df_meta[np_df_meta[:, 3] == x[3], 0]
     category_list.update({x[3]: category})
-print("done here")
-print(category_list.get("Children's Music"))
+print("There are ", len(category_list.items()), " categories!!!")
+# print(category_list.get("Children's Music"))
 for key, value in category_list.items():
     # count = 0
     # if count == 1:
@@ -66,11 +66,11 @@ for k in category_sorted_by_rating.keys():
 fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
 fig1.add_trace(
-    go.Scatter(x=list(category_sorted_by_rating.keys()), y=list(category_sorted_by_rating.values())),
-    secondary_y=False,)
+    go.Scatter(x=list(category_sorted_by_rating.keys()), y=list(category_sorted_by_rating.values()),
+               name='Average rating'), secondary_y=False,)
 
 fig1.add_trace(
-    go.Scatter(x=list(category_sorted_by_rating.keys()), y=list(d_review_count.values())),
+    go.Scatter(x=list(category_sorted_by_rating.keys()), y=list(d_review_count.values()),name='Review Count'),
     secondary_y=True,)
 
 # Set x-axis title
