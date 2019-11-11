@@ -43,7 +43,7 @@ import itertools
 fig = go.Figure()
 
 # Add traces, one for each slider step
-for step in np.arange(0, len(unique_elements), 10000):
+for step in np.arange(0, len(unique_elements), 100):
     data = dict(itertools.islice(customer_reviews.items(), step))
     fig.add_trace(go.Scatter(visible=False,
             line=dict(color="#00CED1", width=6), x=list(data.keys()), y=list(data.values())))
@@ -65,7 +65,7 @@ sliders = [dict(
     currentvalue={"prefix": "Frequency: "},
     pad={"t": 5},
     steps=steps,
-    y=3
+    y=1.2
 )]
 
 fig.update_layout(
