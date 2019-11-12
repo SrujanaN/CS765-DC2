@@ -5,6 +5,8 @@ from collections import OrderedDict
 from plotly.subplots import make_subplots
 import itertools
 
+# 3.Distribution
+# g.Do people who spend more buy many, cheapproducts? Or fewer, expensive products?
 table_a = 'CDs_and_Vinyl_5.csv'
 table_meta = 'CDs_And_Vinyl_meta_5.csv'
 

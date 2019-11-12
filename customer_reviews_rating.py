@@ -5,6 +5,10 @@ from collections import OrderedDict
 from plotly.subplots import make_subplots
 import itertools
 
+# Correlation
+# Correlation between customer rating vs review.
+
+
 table_a = 'CDs_and_Vinyl_5.csv'
 table_meta = 'CDs_And_Vinyl_meta_5.csv'
 

@@ -3,6 +3,8 @@ import numpy as np
 import plotly.graph_objects as go
 from collections import OrderedDict
 from plotly.subplots import make_subplots
+# Correlation
+# Correlation between product price and rating
 
 table_a = 'CDs_and_Vinyl_5.csv'
 table_meta = 'CDs_And_Vinyl_meta_5.csv'
