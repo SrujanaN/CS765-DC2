@@ -46,7 +46,7 @@ fig = make_subplots(specs=[[{"secondary_y": True}]])
 
 fig.add_trace(
     go.Scatter(x=list(product_review_counter.keys()), y=list(product_review_counter.values()),
-               name='Review Count', mode='markers'), secondary_y=False,)
+               name='Review Count', mode='lines'), secondary_y=False,)
 
 fig.add_trace(
     go.Scatter(x=list(product_review_counter.keys()), y=list(product_rating.values()), name='Average Rating',
